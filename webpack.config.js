@@ -2,6 +2,7 @@ var webpack = require("webpack")
 var path = require("path")
 var CleanWebpackPlugin = require('clean-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 process.noDeprecation = true
 
@@ -13,8 +14,15 @@ module.exports = {
     },
     devServer:{
       port:9000,
-      contentBase: __dirname + '/dist',
+      contentBase: path.join(__dirname, 'dist', 'assets'),
       inline: true
+    },
+    optimization:{
+      minimizer: [
+        new UglifyJsPlugin({
+          sourceMap: false
+        })
+      ]
     },
     module: {
         rules: [
@@ -52,6 +60,7 @@ module.exports = {
         }),
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
+            title: 'to-do list',
             inject: false,
             hash: true,
             template: './src/index.html',

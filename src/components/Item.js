@@ -10,10 +10,10 @@ class Item extends Component{
           e.stopPropagation()
           onRemove(id)
         }}>&times;</div>
-        <div className={`todo-text ${checked ? 'checked' : ''}`}>
+        <div className={`todo-text ${checked && 'checked'}`}>
           <div>{text}</div>
         </div>
-        {checked && (<div className="check-mark">✓</div>)}
+        {checked && (<div className="check-mark">&#x2713;</div>)}
       </div>
     )
   }

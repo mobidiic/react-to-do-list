@@ -1,0 +1,7 @@
+@import "global";
+
+body{
+  @include reset;
+  font-family: sans-serif;
+  background: $backgrey;
+}

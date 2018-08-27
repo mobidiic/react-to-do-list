@@ -6,6 +6,7 @@ import ItemList from './components/ItemList'
 
 class App extends Component{
   id = 3
+
   state = {
     input: '',
     todos: [
@@ -35,7 +36,7 @@ class App extends Component{
 
   handleKeyPress = (e) => {
     if(e.key === 'Enter'){
-      this.handleChange()
+      this.handleCreate()
     }
   }
 
@@ -62,6 +63,8 @@ class App extends Component{
     })
   }
   render(){
+    const {input, todos} = this.state
+    const {handleChange, handleCreate, handleRemove, handleToggle, handleKeyPress} = this
     return (
       <Template form={(
         <Form value={input}

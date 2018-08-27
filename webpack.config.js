@@ -10,8 +10,10 @@ module.exports = {
     entry: "./src/index.js",
     output: {
         path:path.join(__dirname, 'dist', 'assets'),
-        filename: "bundle.js"
+        filename: "bundle.js",
+        sourceMapFilename: 'bundle.map'
     },
+    devtool: '#source-map',
     devServer:{
       port:9000,
       contentBase: path.join(__dirname, 'dist', 'assets'),

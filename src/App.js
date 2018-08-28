@@ -4,16 +4,7 @@ import Form from './components/Form'
 import ItemList from './components/ItemList'
 
 class App extends Component{
-  id = 3
-
-  state = {
-    input: '',
-    todos: [
-      {id:0, text: 'create', checked: false},
-      {id:1, text: 'your', checked: true},
-      {id:2, text: 'To-do\'s', checked: false}
-    ]
-  }
+  
 
   handleChange = (e) =>{
     this.setState({

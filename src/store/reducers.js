@@ -1,11 +1,17 @@
 import C from '../constants'
 
-export const Item = (state ={}, action={type:null}) => {
+export const item = (state ={}, action={type:null}) => {
   switch(action.type){
     case C.ON_TOGGLE:
-      return {
-
+      const {todos} = this.state
+      const index = todos.findIndex(todo => todo.id === action.id)
+      const selected = todos[index]
+      const nextTodos = [...todos]
+      nextTodos[index] = {
+        ...selected,
+        checked: !selected.checked
       }
+      return state.todos = nextTodos
     case C.ON_REMOVE:
       return state.filter(
                 c => c.id !== action.id
@@ -13,26 +19,35 @@ export const Item = (state ={}, action={type:null}) => {
   }
 }
 
-export const ItemList = (state = [], action={type:null}) =>{
+export const itemList = (state = [], action={type:null}) =>{
   switch(action.type){
     case C.ON_TOGGLE:
-      return {
-
-      }
+      return state.map(c => Item(c, action))
     case C.ON_REMOVE:
-      return state.filter(
-                c => c.id !== action.id
-            )
+      return state.filter(c => c.id !== action.id)
   }
 }
 
-export const Form = (state = {}, action={type: null}) => {
+export const form = (state = {}, action={type: null}) => {
   switch(action.type){
     case C.ON_CHANGE:
-      return
+      return [
+        ...state,
+        input: action.input
+      ]
     case C.ON_CREATE:
-      return
+      return {
+        id: action.id,
+        checked: action.checked,
+        text: action.text
+      }
     case C.ON_KEY_PRESS:
-      return
+      if(action.ifEnter == true){
+        return {
+        id: action.id,
+        checked: action.checked,
+        text: action.text
+      }
   }
+}
 }

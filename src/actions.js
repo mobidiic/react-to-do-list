@@ -4,7 +4,7 @@ import v4 from 'uuid'
 export const onChange = (e) => (
   {
     type: C.ON_CHANGE,
-    value: e.target.value
+    input: e.target.value
   }
 )
 
@@ -12,7 +12,7 @@ export const onCreate = () => (
   {
     type: C.ON_CREATE,
     id: v4(),
-    text: '',
+    text: state.input,
     checked: false
   }
 )
@@ -27,7 +27,10 @@ export const onRemove = (id) => (
 export const onKeyPress = (e) => (
   {
     type: C.ON_KEY_PRESS,
-
+    ifEnter: e.key === 'Enter',
+    id: v4(),
+    text: state.input,
+    checked: false
   }
 )
 

@@ -11,7 +11,7 @@ class Item extends Component{
     const {text, checked, id, onToggle, onRemove} = this.props
     return (
       <div className="todo-item" onClick={()=> onToggle(id)}>
-        <div className="remove" onClcik={(e)=> {
+        <div className="remove" onClick={(e)=> {
           e.stopPropagation()
           onRemove(id)
         }}>&times;</div>

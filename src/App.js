@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {hot} from 'react-hot-loader'
 import Template from './components/Template'
 import Form from './components/Form'
 import ItemList from './components/ItemList'
@@ -57,11 +56,12 @@ class App extends Component{
   }
 
   handleRemove = (id) => {
-    const {todos} = this.todos
+    const {todos} = this.state
     this.setState({
       todos: todos.filter(todo => todo.id !== id)
     })
   }
+
   render(){
     const {input, todos} = this.state
     const {handleChange, handleCreate, handleRemove, handleToggle, handleKeyPress} = this
@@ -73,11 +73,11 @@ class App extends Component{
               onCreate={handleCreate}
         />
       )}>
-        <ItemList todos={todos} onToggle={handleToggle}/>
+        <ItemList todos={todos} onToggle={handleToggle} onRemove={handleRemove}/>
       </Template>
     )
   }
 }
 
 
-export default hot(module)(App)
+export default App
